@@ -18,8 +18,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var button7: Button
     private lateinit var button8: Button
     private lateinit var button9: Button
-
+    private var p1score: Int = 0
+    private var p2score: Int = 0
     private lateinit var resetButton: Button
+    private lateinit var player1button: Button
+    private lateinit var player2button: Button
+
 
     private var activePlayer = 1
 
@@ -35,7 +39,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun init() {
-
         button1 = findViewById(R.id.button1)
         button2 = findViewById(R.id.button2)
         button3 = findViewById(R.id.button3)
@@ -47,6 +50,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         button9 = findViewById(R.id.button9)
 
         resetButton = findViewById(R.id.resetButton)
+        player1button = findViewById(R.id.Player1)
+        player2button = findViewById(R.id.Player2)
+        player1button.isEnabled=false
+        player2button.isEnabled=false
 
         button1.setOnClickListener(this)
         button2.setOnClickListener(this)
@@ -112,7 +119,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun check() {
-
         var winnerPlayer = 0
 
         if (firstPlayer.contains(1) && firstPlayer.contains(2) && firstPlayer.contains(3)) {
@@ -183,9 +189,31 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
             if (winnerPlayer == 1) {
                 Toast.makeText(this, "X Wins!", Toast.LENGTH_LONG).show()
+                p1score++
+                player1button.text="Player1: $p1score"
+                button1.isEnabled=false
+                button2.isEnabled=false
+                button3.isEnabled=false
+                button4.isEnabled=false
+                button5.isEnabled=false
+                button6.isEnabled=false
+                button7.isEnabled=false
+                button8.isEnabled=false
+                button9.isEnabled=false
 
             } else {
+                p2score++
+                player2button.text="Player2: $p2score"
                 Toast.makeText(this, "0 Wins!", Toast.LENGTH_LONG).show()
+                button1.isEnabled=false
+                button2.isEnabled=false
+                button3.isEnabled=false
+                button4.isEnabled=false
+                button5.isEnabled=false
+                button6.isEnabled=false
+                button7.isEnabled=false
+                button8.isEnabled=false
+                button9.isEnabled=false
 
             }
 
